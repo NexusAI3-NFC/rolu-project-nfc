@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ROLU PROJECT — Tarjeta digital</title>
+<meta name="description" content="ROLU PROJECT · Ropa en Alcobendas. La actitud también se viste. Llama, escribe o visítanos." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000%22/><text x=%2250%22 y=%2262%22 font-family=%22Arial Black,Arial%22 font-weight=%22900%22 font-size=%2238%22 fill=%22%23fff%22 text-anchor=%22middle%22>R</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0a0a;
+    --card: #141414;
+    --card-2: #1c1c1c;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --gold: #f5c451;
+    --grad: linear-gradient(135deg, #ff2f6e 0%, #ff7a3d 45%, #ffd23f 100%);
+    --grad-soft: linear-gradient(135deg, rgba(255,47,110,.18) 0%, rgba(255,122,61,.18) 45%, rgba(255,210,63,.18) 100%);
+    --radius: 18px;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% -10%, rgba(255,47,110,.20), transparent 40%),
+      radial-gradient(circle at 90% 0%, rgba(255,210,63,.14), transparent 35%);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, Segoe UI, sans-serif;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+  }
+  .page{
+    width:100%;
+    max-width: 480px;
+    padding: 40px 20px 28px;
+  }
+  .logo-wrap{
+    width: 118px;
+    height: 118px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    padding: 3px;
+    background: var(--grad);
+  }
+  .logo{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .logo svg{ width: 78%; height: 78%; }
+  h1{
+    text-align:center;
+    font-family:'Archivo Black', 'Inter', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+  }
+  .badge{
+    display:block;
+    text-align:center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color:#0a0a0a;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+  p.tagline{
+    text-align:center;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 auto 24px;
+    max-width: 340px;
+  }
+  .actions{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .action{
+    background: var(--card);
+    border: 1px solid #262626;
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align:center;
+    text-decoration:none;
+    color: var(--text);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .action:active{ transform: scale(0.97); }
+  .action svg{ width:20px; height:20px; }
+  .action.primary{
+    background: var(--grad);
+    color:#0a0a0a;
+    border-color: transparent;
+  }
+  .action.primary svg{ stroke:#0a0a0a; }
+  h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin: 0 0 12px;
+    font-weight:700;
+  }
+  section{ margin-bottom: 28px; }
+  .card{
+    background: var(--card);
+    border: 1px solid #262626;
+    border-radius: var(--radius);
+    padding: 16px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    text-decoration:none;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .card .icon{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--grad-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .card .icon svg{ width:20px; height:20px; }
+  .card .body{ flex:1; min-width:0; }
+  .card .title{ font-weight:700; font-size:15px; }
+  .card .sub{ color: var(--muted); font-size: 13px; margin-top:2px; }
+  .card .go{ color: var(--gold); flex-shrink:0; }
+  .contact-row{
+    background: var(--card);
+    border: 1px solid #262626;
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .contact-row .icon{
+    width: 40px; height:40px; border-radius:50%;
+    background: var(--grad-soft);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-row .icon svg{ width:18px; height:18px; }
+  .contact-row .body{ flex:1; }
+  .contact-row .num{ font-weight:700; font-size:16px; letter-spacing:.3px; }
+  .contact-row .label{ color:var(--muted); font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+  .contact-row .btns{ display:flex; gap:8px; }
+  .contact-row .btns a{
+    width:36px; height:36px; border-radius:50%;
+    background:var(--card-2);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text); text-decoration:none;
+  }
+  .contact-row .btns a svg{ width:16px; height:16px; }
+  .save-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%;
+    background: var(--grad);
+    color:#0a0a0a;
+    border:none;
+    border-radius: 14px;
+    padding: 15px;
+    font-size:15px;
+    font-weight:800;
+    font-family: inherit;
+    cursor:pointer;
+    margin-bottom: 8px;
+  }
+  .save-hint{ text-align:center; color:var(--muted); font-size:12.5px; margin: 0 0 4px; }
+  .info-list{ list-style:none; padding:0; margin:0; }
+  .info-list li{
+    display:flex; gap:12px; align-items:flex-start;
+    color: var(--text);
+    font-size: 14.5px;
+    line-height:1.5;
+    padding: 10px 0;
+    border-bottom: 1px solid #202020;
+  }
+  .info-list li:last-child{ border-bottom:none; }
+  .info-list svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--gold); }
+  .hours-table{ width:100%; border-collapse:collapse; }
+  .hours-table td{ padding: 3px 0; font-size:14px; }
+  .hours-table td:first-child{ color: var(--muted); width:90px; }
+  .hours-table tr.today td{ color: var(--gold); font-weight:700; }
+  .map-wrap{
+    border-radius: var(--radius);
+    overflow:hidden;
+    border: 1px solid #262626;
+    margin-top: 14px;
+  }
+  .map-wrap iframe{ width:100%; height:220px; border:0; display:block; filter: grayscale(0.15) invert(0.92) contrast(0.9); }
+  footer{
+    text-align:center;
+    color:#5c5c5c;
+    font-size:12px;
+    margin-top: 30px;
+    letter-spacing: .3px;
+  }
+  a{ -webkit-tap-highlight-color: transparent; }
+  svg{ width:20px; height:20px; }
+  .save-btn svg{ width:19px; height:19px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <div class="logo">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 78C14 78 30 20 65 14C92 9 108 28 104 44" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M96 30L104 44L118 40" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="60" y="70" font-family="Archivo Black, Arial" font-weight="900" font-size="30" fill="#fff" text-anchor="middle">ROLU</text>
+        <path d="M60 82l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="url(#g1)"/>
+        <defs>
+          <linearGradient id="g1" x1="10" y1="10" x2="110" y2="100" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff2f6e"/>
+            <stop offset="0.5" stop-color="#ff7a3d"/>
+            <stop offset="1" stop-color="#ffd23f"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <h1>ROLU PROJECT</h1>
+  <span class="badge">ROPA · MODA</span>
+  <p class="tagline">La actitud también se viste ⭐<br>Tienda de moda en Alcobendas.</p>
+
+  <div class="actions">
+    <a class="action primary" href="tel:+34651481338">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar
+    </a>
+    <a class="action" href="https://wa.me/34651481338" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.876.512 3.633 1.406 5.145L2 22l4.994-1.379A9.96 9.96 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.2a8.17 8.17 0 0 1-4.166-1.143l-.299-.177-3.107.859.83-3.03-.194-.311A8.176 8.176 0 1 1 20.176 12 8.184 8.184 0 0 1 12.001 20.2z"/></svg>
+      WhatsApp
+    </a>
+    <a class="action" href="https://share.google/jWU1VUe7RR46VsaRs" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cómo llegar
+    </a>
+  </div>
+
+  <section>
+    <h2>Síguenos</h2>
+    <a class="card" href="https://www.instagram.com/rolu.project" target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="body">
+        <div class="title">@rolu.project</div>
+        <div class="sub">Síguenos y descubre las novedades →</div>
+      </div>
+    </a>
+  </section>
+
+  <section>
+    <h2>Contacto directo</h2>
+    <div class="contact-row">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="body">
+        <div class="num">651 48 13 38</div>
+        <div class="label">Móvil · WhatsApp</div>
+      </div>
+      <div class="btns">
+        <a href="tel:+34651481338" aria-label="Llamar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a href="https://wa.me/34651481338" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.876.512 3.633 1.406 5.145L2 22l4.994-1.379A9.96 9.96 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.2a8.17 8.17 0 0 1-4.166-1.143l-.299-.177-3.107.859.83-3.03-.194-.311A8.176 8.176 0 1 1 20.176 12 8.184 8.184 0 0 1 12.001 20.2z"/></svg></a>
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveContact()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Guardar contacto
+    </button>
+    <p class="save-hint">Se añade a tu agenda sin escribir nada a mano</p>
+  </section>
+
+  <section>
+    <h2>Visítanos</h2>
+    <ul class="info-list">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Paseo de la Chopera, 122, 28100 Alcobendas, Madrid
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <table class="hours-table" id="hoursTable">
+          <tr data-day="1"><td>Lunes</td><td>Cerrado</td></tr>
+          <tr data-day="2"><td>Martes</td><td>11:00–14:00 y 17:30–20:30</td></tr>
+          <tr data-day="3"><td>Miércoles</td><td>10:30–20:30</td></tr>
+          <tr data-day="4"><td>Jueves</td><td>10:30–14:00 y 17:30–20:30</td></tr>
+          <tr data-day="5"><td>Viernes</td><td>10:30–14:00 y 17:30–20:30</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>11:00–14:00 y 17:30–20:30</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>11:30–14:00</td></tr>
+        </table>
+      </li>
+    </ul>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps?q=Paseo+de+la+Chopera+122+Alcobendas+Madrid&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <footer>Tarjeta digital · ROLU PROJECT © 2026</footer>
+</div>
+
+<script>
+function saveContact(){
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:;ROLU PROJECT;;;',
+    'FN:ROLU PROJECT',
+    'ORG:ROLU PROJECT',
+    'TEL;TYPE=CELL,VOICE:+34651481338',
+    'ADR;TYPE=WORK:;;Paseo de la Chopera, 122;Alcobendas;Madrid;28100;España',
+    'URL:https://www.instagram.com/rolu.project',
+    'NOTE:La actitud también se viste',
+    'END:VCARD'
+  ].join('\r\n');
+  const blob = new Blob([vcard], { type: 'text/vcard' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ROLU_PROJECT.vcf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+(function highlightToday(){
+  const day = new Date().getDay();
+  const row = document.querySelector('#hoursTable tr[data-day="' + day + '"]');
+  if(row) row.classList.add('today');
+})();
+</script>
+</body>
+</html>
