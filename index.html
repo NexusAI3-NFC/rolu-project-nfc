@@ -8,26 +8,22 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000%22/><text x=%2250%22 y=%2262%22 font-family=%22Arial Black,Arial%22 font-weight=%22900%22 font-size=%2238%22 fill=%22%23fff%22 text-anchor=%22middle%22>R</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0a0a0a;
-    --card: #141414;
-    --card-2: #1c1c1c;
-    --text: #f5f5f5;
-    --muted: #a3a3a3;
-    --gold: #f5c451;
-    --grad: linear-gradient(135deg, #ff2f6e 0%, #ff7a3d 45%, #ffd23f 100%);
-    --grad-soft: linear-gradient(135deg, rgba(255,47,110,.18) 0%, rgba(255,122,61,.18) 45%, rgba(255,210,63,.18) 100%);
-    --radius: 18px;
+    --bg: #0b0b0a;
+    --card: #131311;
+    --card-2: #1a1a17;
+    --text: #eceae4;
+    --muted: #8c887e;
+    --border: #262420;
+    --accent: #cdbfa3;
+    --radius: 16px;
   }
   *{ box-sizing: border-box; }
   html,body{ margin:0; padding:0; }
   body{
     background: var(--bg);
-    background-image:
-      radial-gradient(circle at 15% -10%, rgba(255,47,110,.20), transparent 40%),
-      radial-gradient(circle at 90% 0%, rgba(255,210,63,.14), transparent 35%);
     color: var(--text);
     font-family: 'Inter', -apple-system, Segoe UI, sans-serif;
     min-height: 100vh;
@@ -36,67 +32,61 @@
   }
   .page{
     width:100%;
-    max-width: 480px;
-    padding: 40px 20px 28px;
+    max-width: 440px;
+    padding: 56px 22px 32px;
   }
   .logo-wrap{
-    width: 118px;
-    height: 118px;
-    margin: 0 auto 20px;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 26px;
     border-radius: 50%;
-    padding: 3px;
-    background: var(--grad);
+    padding: 2px;
+    border: 1px solid var(--border);
   }
   .logo{
     width:100%;
     height:100%;
     border-radius:50%;
     background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
     overflow:hidden;
   }
-  .logo svg{ width: 78%; height: 78%; }
+  .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
   h1{
     text-align:center;
-    font-family:'Archivo Black', 'Inter', sans-serif;
-    font-size: 32px;
-    letter-spacing: 1px;
-    margin: 0 0 6px;
+    font-family:'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 5px;
+    margin: 0 0 12px;
   }
   .badge{
     display:block;
     text-align:center;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 500;
     letter-spacing: 3px;
-    color:#0a0a0a;
-    background: var(--grad);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 16px;
+    color: var(--muted);
+    margin-bottom: 20px;
   }
   p.tagline{
     text-align:center;
     color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0 auto 24px;
-    max-width: 340px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin: 0 auto 32px;
+    max-width: 320px;
   }
   .actions{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 28px;
+    gap: 8px;
+    margin-bottom: 32px;
   }
   .action{
-    background: var(--card);
-    border: 1px solid #262626;
-    border-radius: 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
     padding: 14px 6px;
     text-align:center;
     text-decoration:none;
@@ -105,30 +95,30 @@
     flex-direction:column;
     align-items:center;
     gap:8px;
-    font-size: 12.5px;
-    font-weight: 600;
-    transition: transform .15s ease, border-color .15s ease;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
   }
   .action:active{ transform: scale(0.97); }
-  .action svg{ width:20px; height:20px; }
+  .action svg{ width:18px; height:18px; }
   .action.primary{
-    background: var(--grad);
-    color:#0a0a0a;
-    border-color: transparent;
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
   }
-  .action.primary svg{ stroke:#0a0a0a; }
   h2{
-    font-size: 13px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     color: var(--muted);
     margin: 0 0 12px;
-    font-weight:700;
+    font-weight:500;
   }
-  section{ margin-bottom: 28px; }
+  section{ margin-bottom: 30px; }
   .card{
     background: var(--card);
-    border: 1px solid #262626;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px;
     display:flex;
@@ -139,23 +129,23 @@
     margin-bottom: 10px;
   }
   .card .icon{
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: var(--grad-soft);
+    background: transparent;
+    border: 1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
   }
-  .card .icon svg{ width:20px; height:20px; }
+  .card .icon svg{ width:17px; height:17px; color: var(--text); }
   .card .body{ flex:1; min-width:0; }
-  .card .title{ font-weight:700; font-size:15px; }
-  .card .sub{ color: var(--muted); font-size: 13px; margin-top:2px; }
-  .card .go{ color: var(--gold); flex-shrink:0; }
+  .card .title{ font-weight:600; font-size:14.5px; }
+  .card .sub{ color: var(--muted); font-size: 12.5px; margin-top:3px; }
   .contact-row{
     background: var(--card);
-    border: 1px solid #262626;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 14px 16px;
     display:flex;
@@ -164,70 +154,75 @@
     margin-bottom: 10px;
   }
   .contact-row .icon{
-    width: 40px; height:40px; border-radius:50%;
-    background: var(--grad-soft);
+    width: 38px; height:38px; border-radius:50%;
+    background: transparent;
+    border: 1px solid var(--border);
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
-  .contact-row .icon svg{ width:18px; height:18px; }
+  .contact-row .icon svg{ width:16px; height:16px; color: var(--text); }
   .contact-row .body{ flex:1; }
-  .contact-row .num{ font-weight:700; font-size:16px; letter-spacing:.3px; }
-  .contact-row .label{ color:var(--muted); font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+  .contact-row .num{ font-weight:600; font-size:15px; letter-spacing:.3px; }
+  .contact-row .label{ color:var(--muted); font-size:10.5px; letter-spacing:1px; text-transform:uppercase; margin-top:3px; }
   .contact-row .btns{ display:flex; gap:8px; }
   .contact-row .btns a{
-    width:36px; height:36px; border-radius:50%;
-    background:var(--card-2);
+    width:34px; height:34px; border-radius:50%;
+    background:transparent;
+    border: 1px solid var(--border);
     display:flex; align-items:center; justify-content:center;
     color:var(--text); text-decoration:none;
   }
-  .contact-row .btns a svg{ width:16px; height:16px; }
+  .contact-row .btns a svg{ width:15px; height:15px; }
   .save-btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
     width:100%;
-    background: var(--grad);
-    color:#0a0a0a;
+    background: var(--text);
+    color: var(--bg);
     border:none;
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 15px;
-    font-size:15px;
-    font-weight:800;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.3px;
     font-family: inherit;
     cursor:pointer;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-  .save-hint{ text-align:center; color:var(--muted); font-size:12.5px; margin: 0 0 4px; }
+  .save-hint{ text-align:center; color:var(--muted); font-size:12px; margin: 0 0 4px; }
   .info-list{ list-style:none; padding:0; margin:0; }
   .info-list li{
     display:flex; gap:12px; align-items:flex-start;
     color: var(--text);
-    font-size: 14.5px;
-    line-height:1.5;
-    padding: 10px 0;
-    border-bottom: 1px solid #202020;
+    font-size: 14px;
+    font-weight: 300;
+    line-height:1.6;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
   }
   .info-list li:last-child{ border-bottom:none; }
-  .info-list svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--gold); }
+  .info-list svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; color: var(--muted); }
   .hours-table{ width:100%; border-collapse:collapse; }
-  .hours-table td{ padding: 3px 0; font-size:14px; }
+  .hours-table td{ padding: 3px 0; font-size:13.5px; font-weight:300; }
   .hours-table td:first-child{ color: var(--muted); width:90px; }
-  .hours-table tr.today td{ color: var(--gold); font-weight:700; }
+  .hours-table tr.today td{ color: var(--text); font-weight:600; }
   .map-wrap{
     border-radius: var(--radius);
     overflow:hidden;
-    border: 1px solid #262626;
-    margin-top: 14px;
+    border: 1px solid var(--border);
+    margin-top: 16px;
   }
-  .map-wrap iframe{ width:100%; height:220px; border:0; display:block; filter: grayscale(0.15) invert(0.92) contrast(0.9); }
+  .map-wrap iframe{ width:100%; height:200px; border:0; display:block; filter: grayscale(0.5) invert(0.9) contrast(0.85); }
   footer{
     text-align:center;
-    color:#5c5c5c;
-    font-size:12px;
-    margin-top: 30px;
-    letter-spacing: .3px;
+    color: var(--border);
+    font-size:11px;
+    margin-top: 34px;
+    letter-spacing: .8px;
+    text-transform: uppercase;
   }
   a{ -webkit-tap-highlight-color: transparent; }
   svg{ width:20px; height:20px; }
-  .save-btn svg{ width:19px; height:19px; flex-shrink:0; }
+  .save-btn svg{ width:16px; height:16px; flex-shrink:0; }
 </style>
 </head>
 <body>
@@ -235,25 +230,13 @@
 
   <div class="logo-wrap">
     <div class="logo">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 78C14 78 30 20 65 14C92 9 108 28 104 44" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M96 30L104 44L118 40" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="60" y="70" font-family="Archivo Black, Arial" font-weight="900" font-size="30" fill="#fff" text-anchor="middle">ROLU</text>
-        <path d="M60 82l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="url(#g1)"/>
-        <defs>
-          <linearGradient id="g1" x1="10" y1="10" x2="110" y2="100" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#ff2f6e"/>
-            <stop offset="0.5" stop-color="#ff7a3d"/>
-            <stop offset="1" stop-color="#ffd23f"/>
-          </linearGradient>
-        </defs>
-      </svg>
+      <img src="assets/logo.png" alt="ROLU PROJECT" />
     </div>
   </div>
 
   <h1>ROLU PROJECT</h1>
   <span class="badge">ROPA · MODA</span>
-  <p class="tagline">La actitud también se viste ⭐<br>Tienda de moda en Alcobendas.</p>
+  <p class="tagline">La actitud también se viste.<br>Tienda de moda en Alcobendas.</p>
 
   <div class="actions">
     <a class="action primary" href="tel:+34651481338">
